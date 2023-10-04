@@ -1,10 +1,12 @@
 import React from 'react';
 import { Tab } from 'semantic-ui-react';
 import PingPage from './ping-page/PingPage';
+import UserPage from './UserPage';
 
 class MainPage extends React.Component {
 
     panes = [
+        { menuItem: 'User Page', render: () => <Tab.Pane><UserPage text="Welcome User." /></Tab.Pane> },
         { menuItem: 'Ping', render: () => <Tab.Pane><PingPage /></Tab.Pane> },
     ]
 
