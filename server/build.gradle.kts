@@ -6,7 +6,7 @@ plugins {
     kotlin("jvm") version "1.8.20"
     kotlin("plugin.serialization") version "1.8.20"
     id("io.ktor.plugin") version "2.3.0"
-    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
     id("org.jetbrains.kotlinx.kover") version "0.7.3"
 }
 
@@ -48,6 +48,7 @@ dependencies {
 
     // General utilities
     implementation("org.apache.commons:commons-text:1.3")
+    implementation("org.apache.commons:commons-csv:1.5")
 
     // Testing
     testImplementation("org.flywaydb:flyway-core:9.20.0")
@@ -57,4 +58,5 @@ dependencies {
     testImplementation("io.rest-assured:rest-assured:3.0.7")
     testImplementation("com.willowtreeapps.assertk:assertk:0.9")
     testImplementation("io.mockk:mockk:1.13.7")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 }
