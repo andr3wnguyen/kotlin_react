@@ -17,6 +17,8 @@ class UserPage extends React.Component {
                 value2='Outdoor'
                 label1='Indoor'
                 label2='Outdoor'
+                boolean1='true'
+                boolean2='false'
                 />
                 <CheckBoxOptions
                 name='checkboxRadioGroup'
@@ -24,6 +26,8 @@ class UserPage extends React.Component {
                 value2='Group'
                 label1='Alone'
                 label2='Group'
+                boolean1='true'
+                boolean2='false'
                 />
 
 
