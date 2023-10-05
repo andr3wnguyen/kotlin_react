@@ -1,9 +1,34 @@
 import React from 'react';
 import { Button, Grid, Header } from 'semantic-ui-react';
 import CheckBoxOptions from '../components/CheckBoxOptions';
+import { createUserPreferences,pingServer } from '../apis/StarterClient';
+//import axios from 'axios';
 
 
 class UserPage extends React.Component {
+
+
+//https://stackabuse.com/post-http-request-in-react/
+handleButtonClick = async () => {
+const dataToSend = {
+  indoor: false, group: false
+};
+//        const body = { message: 'Hello, server!', number: 1 };
+//
+//        const response = await pingServer(body);
+//        console.log(response)
+        const response = await createUserPreferences(dataToSend);
+        console.log(response)
+
+//axios.post('/preference', dataToSend)
+//  .then((response) => {
+//    console.log(response.data);
+//      // Handle data
+//  })
+//  .catch((error) => {
+//    console.log(error);
+//  })
+}
 
     render() {
         return (
@@ -31,7 +56,7 @@ class UserPage extends React.Component {
                 />
 
 
-                <button onClick={this.props.onButtonClick}>Enter</button>
+                <button onClick={this.handleButtonClick}>Enter</button>
             </div>
         );
     }

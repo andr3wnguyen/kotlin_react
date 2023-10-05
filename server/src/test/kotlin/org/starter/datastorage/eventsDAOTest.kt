@@ -8,7 +8,7 @@ class eventsDAOTest {
 
     @Test
     fun testDatabase() {
-        val database = eventsDAO()
+        val database = EventsDAO()
         val databaseEvents = database.getEvent()
         println(databaseEvents)
         assert(databaseEvents.isNotEmpty())
@@ -18,7 +18,7 @@ class eventsDAOTest {
     //TODO this needs to be better tested
     @Test
     fun testGetEvent() {
-        val database = eventsDAO()
+        val database = EventsDAO()
         val databaseEvent = database.getEventById(1)
         println(databaseEvent)
         assert(databaseEvent == Event(1,"Go for a run"))

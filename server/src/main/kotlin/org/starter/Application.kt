@@ -1,10 +1,12 @@
 package org.starter
 
+import database.EventsDAO
 import io.ktor.server.application.*
 import org.starter.apps.ComponentRegistry
 import org.starter.plugins.configureContentNegotation
 import org.starter.plugins.configureHTTP
 import org.starter.plugins.configureRouting
+import org.starter.services.EventService
 import org.starter.utils.ConfigUtils.loadConfig
 
 fun main(args: Array<String>): Unit =
@@ -15,9 +17,9 @@ fun Application.module() {
     val appEnvironment = environment.config.propertyOrNull("app.environment")?.getString()
 
     val appConfig = loadConfig(appEnvironment)
-    val componentRegistry = ComponentRegistry(appConfig)
+    val eventService = EventService(EventsDAO())
 
     configureHTTP()
-    configureRouting(componentRegistry)
+    configureRouting(eventService)
     configureContentNegotation()
 }
