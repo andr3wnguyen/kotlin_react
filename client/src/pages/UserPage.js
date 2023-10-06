@@ -11,23 +11,12 @@ class UserPage extends React.Component {
 //https://stackabuse.com/post-http-request-in-react/
 handleButtonClick = async () => {
 const dataToSend = {
-  indoor: false, group: false
+  "indoor": true, group: false
 };
-//        const body = { message: 'Hello, server!', number: 1 };
-//
-//        const response = await pingServer(body);
-//        console.log(response)
+
         const response = await createUserPreferences(dataToSend);
         console.log(response)
 
-//axios.post('/preference', dataToSend)
-//  .then((response) => {
-//    console.log(response.data);
-//      // Handle data
-//  })
-//  .catch((error) => {
-//    console.log(error);
-//  })
 }
 
     render() {

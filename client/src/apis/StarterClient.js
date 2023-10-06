@@ -23,3 +23,7 @@ export const pingServer = async (ping) => {
 export const createUserPreferences = async (preference) => {
     return await StarterClient.post('preference', preference);
 };
+
+export const getEvent = async () => {
+    return await StarterClient.get('preference');
+};
