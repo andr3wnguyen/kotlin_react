@@ -2,6 +2,7 @@ import React from 'react'
 import { Form, Checkbox } from 'semantic-ui-react'
 
 function CheckboxExampleRadioGroup(props) {
+
   const [selectedValue, setValue] = React.useState()
 
   return (
@@ -12,16 +13,17 @@ function CheckboxExampleRadioGroup(props) {
           radio
           label={props.label1}
           name={props.name}
-          value={props.booleon1}
+          value={props.booleonInt1 == 'true'}
           checked={selectedValue === props.value1}
           onChange={(e, data) => setValue(data.label)}
+
         />
         <br></br>
         <Checkbox
           radio
           label={props.label2}
           name={props.name}
-          value={props.boolean2}
+          value={props.booleanInt2 == 'true'} //had to convert prop to a bool meep meep
           checked={selectedValue === props.value2}
           onChange={(e, data) => setValue(data.label)}
         />

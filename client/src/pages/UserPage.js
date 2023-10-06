@@ -1,23 +1,30 @@
 import React from 'react';
-import { Button, Grid, Header } from 'semantic-ui-react';
 import CheckBoxOptions from '../components/CheckBoxOptions';
 import { createUserPreferences,pingServer } from '../apis/StarterClient';
-//import axios from 'axios';
-
 
 class UserPage extends React.Component {
 
 
-//https://stackabuse.com/post-http-request-in-react/
+//https://stackoverflow.com/questions/70019647/how-to-handle-group-radio-button-in-react-js-functional-component
+//https://www.pluralsight.com/guides/how-to-use-radio-buttons-in-reactjs
+//https://stackoverflow.com/questions/39326300/why-we-cannot-pass-boolean-value-as-props-in-react-it-always-demands-string-to
 handleButtonClick = async () => {
-const dataToSend = {
-  "indoor": true, group: false
-};
+//get the values from the buttons and set the body for the req
+const indoorBool = document.querySelector(
+    'input[name="indoor"]:checked'
+  ).value;
 
-        const response = await createUserPreferences(dataToSend);
-        console.log(response)
+const groupBool = document.querySelector(
+    'input[name="group"]:checked'
+).value;
 
+const body = {
+    "indoor":indoorBool, "group":groupBool
 }
+        const response = await createUserPreferences(body);
+        console.log(response)
+}
+
 
     render() {
         return (
@@ -25,23 +32,28 @@ const dataToSend = {
                 <h1>Things to do.</h1>
                 <p>{this.props.text}</p>
                 <CheckBoxOptions
-                //get the value from this checkbox - probably something like name of the component -> .value
-                name='checkboxRadioGroup'
+                name='indoor'
                 value1='Indoor'
                 value2='Outdoor'
                 label1='Indoor'
                 label2='Outdoor'
-                boolean1='true'
-                boolean2='false'
+                booleanInt1={true}
+                booleanInt2={false}
+                onValueChange={(value) => {
+                    console.log('Selected value:', value);
+                }}
                 />
                 <CheckBoxOptions
-                name='checkboxRadioGroup'
+                name='group'
                 value1='Alone'
                 value2='Group'
                 label1='Alone'
                 label2='Group'
-                boolean1='true'
-                boolean2='false'
+                boolean1={true}
+                boolean2={false}
+                onValueChange={(value) => {
+                    console.log('Selected value:', value);
+                }}
                 />
 
 
