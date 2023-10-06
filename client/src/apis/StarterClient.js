@@ -19,3 +19,11 @@ StarterClient.interceptors.response.use(
 export const pingServer = async (ping) => {
     return await StarterClient.post('ping', ping);
 };
+
+export const createUserPreferences = async (preference) => {
+    return await StarterClient.post('preference', preference);
+};
+
+export const getEvent = async () => {
+    return await StarterClient.get('preference');
+};

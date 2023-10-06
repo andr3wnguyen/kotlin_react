@@ -12,18 +12,18 @@ function CheckboxExampleRadioGroup(props) {
           radio
           label={props.label1}
           name={props.name}
-          value={props.value1}
+          value={props.booleon1}
           checked={selectedValue === props.value1}
-          onChange={(e, data) => setValue(data.value)}
+          onChange={(e, data) => setValue(data.label)}
         />
         <br></br>
         <Checkbox
           radio
           label={props.label2}
           name={props.name}
-          value={props.value2}
+          value={props.boolean2}
           checked={selectedValue === props.value2}
-          onChange={(e, data) => setValue(data.value)}
+          onChange={(e, data) => setValue(data.label)}
         />
       </Form.Field>
       <br></br>

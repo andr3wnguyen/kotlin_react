@@ -3,7 +3,7 @@ package database
 import org.starter.model.Event
 import java.io.File
 
-class eventsDAO {
+class EventsDAO {
 //TODO why is this csv file path so janky
     private var events: List<Event> = readCsv("src/main/kotlin/org/starter/datastorage/events.csv")
 
