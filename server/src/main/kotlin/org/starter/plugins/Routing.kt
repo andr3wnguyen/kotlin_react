@@ -33,5 +33,10 @@ fun Application.configureRouting(eventService: EventService) {
             call.response.status(HttpStatusCode.OK)
             call.respond(retrievedEvent)
         }
+
+        get("/preference") {
+            val event = eventService.retrieveEvent(1)
+            call.respond(event)
+        }
     }
 }
