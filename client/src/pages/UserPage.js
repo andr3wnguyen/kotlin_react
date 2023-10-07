@@ -1,14 +1,14 @@
 import React from 'react';
 import CheckBoxOptions from '../components/CheckBoxOptions';
 import { createUserPreferences,pingServer } from '../apis/StarterClient';
+import Revealer from '../components/Revealer';
 
 class UserPage extends React.Component {
 
+    state = {retreivedEvents:""}
 
-//https://stackoverflow.com/questions/70019647/how-to-handle-group-radio-button-in-react-js-functional-component
-//https://www.pluralsight.com/guides/how-to-use-radio-buttons-in-reactjs
-//https://stackoverflow.com/questions/39326300/why-we-cannot-pass-boolean-value-as-props-in-react-it-always-demands-string-to
-handleButtonClick = async () => {
+
+getEvents = async () => {
 //get the values from the buttons and set the body for the req
 const indoorBool = document.querySelector(
     'input[name="indoor"]:checked'
@@ -22,7 +22,9 @@ const body = {
     "indoor":indoorBool, "group":groupBool
 }
         const response = await createUserPreferences(body);
-        console.log(response)
+        this.setState({retreivedEvents:response.data})
+        //get this to trigger the revealer
+        console.log(response.data.title)
 }
 
 
@@ -55,12 +57,17 @@ const body = {
                     console.log('Selected value:', value);
                 }}
                 />
-
-
-                <button onClick={this.handleButtonClick}>Enter</button>
+                
+                <Revealer text={this.state.retreivedEvents.title} getTextMethod={this.getEvents}/>
             </div>
         );
     }
 }
 
 export default UserPage;
+
+//random resources
+//https://medium.com/@babux1/how-to-pass-state-data-from-one-component-to-another-in-react-js-9b4850887163#:~:text=There%20are%20several%20ways%20to,depending%20on%20your%20use%20case.%E2%80%9D
+//https://stackoverflow.com/questions/70019647/how-to-handle-group-radio-button-in-react-js-functional-component
+//https://www.pluralsight.com/guides/how-to-use-radio-buttons-in-reactjs
+//https://stackoverflow.com/questions/39326300/why-we-cannot-pass-boolean-value-as-props-in-react-it-always-demands-string-to
