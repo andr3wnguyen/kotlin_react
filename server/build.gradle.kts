@@ -59,4 +59,6 @@ dependencies {
     testImplementation("com.willowtreeapps.assertk:assertk:0.9")
     testImplementation("io.mockk:mockk:1.13.7")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("org.mockito:mockito-core:3.11.2")
+    testImplementation("org.mockito:mockito-inline:2.13.0") //mocking final class EventsService test
 }
