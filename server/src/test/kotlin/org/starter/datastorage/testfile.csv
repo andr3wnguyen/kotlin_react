@@ -1,0 +1,4 @@
+"id", "title", "group", "indoor"
+1, "go for a walk", true, true
+2, "go be alone inside", false, true
+3, "go outside with your friend", true, false

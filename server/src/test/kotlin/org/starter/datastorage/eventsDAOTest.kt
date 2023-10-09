@@ -1,7 +1,12 @@
 package database
 
+import io.mockk.mockkStatic
 import org.junit.Test
 import org.starter.model.Event
+import org.mockito.Mockito
+import org.starter.model.UserPreferences
+import org.starter.services.EventService
+import java.io.File
 
 //https://kotlinlang.org/docs/jvm-test-using-junit.html
 class eventsDAOTest {
@@ -15,12 +20,40 @@ class eventsDAOTest {
     }
 
 
-    //TODO this needs to be better tested
+    //TODO this needs to be better tested MOCKED.
     @Test
     fun testGetEvent() {
-        val database = EventsDAO()
-        val databaseEvent = database.getEventById(1)
-        println(databaseEvent)
-        assert(databaseEvent == Event(1,"Go for a run"))
+        //mock the csv reader
+        //given
+        val eventsDAO = EventsDAO()
+
+        //read in the temp file
+        eventsDAO.getEventsFromNewSource("src/test/kotlin/org/starter/datastorage/testfile.csv")
+
+        //when
+        val databaseEvent = eventsDAO.getEventById(1)
+
+        //then
+        val expected = Event(1, "go for a walk", group = true, indoor = true)
+        assert(databaseEvent == expected)
+    }
+
+
+    fun getFilteredEvents() {
+
+        //given
+        val eventsDAO = EventsDAO()
+        //read in the temp file
+        eventsDAO.getEventsFromNewSource("src/test/kotlin/org/starter/datastorage/testfile.csv")
+
+        //when
+        val userPreferences = UserPreferences(group = false, indoor = true)
+        val expected = listOf(Event(2, "go be alone inside", group = false, indoor = true))
+        val actual = eventsDAO.getFilteredEvents(userPreferences)
+
+
+        //then
+        assert(actual == expected)
+
     }
 }

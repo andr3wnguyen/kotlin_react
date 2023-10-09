@@ -1,10 +1,8 @@
 package org.starter.services
 
 import database.EventsDAO
-import org.starter.services.EventService
-import io.ktor.util.reflect.*
+
 import org.junit.Test
-import org.junit.jupiter.api.Assertions.*
 import org.mockito.Mockito
 import org.starter.model.Event
 
@@ -18,7 +16,7 @@ class EventServiceTest() {
     fun eventServiceReturnsEvent() {
         //given
         val mockEventsDAO = Mockito.mock(EventsDAO::class.java)
-        Mockito.`when`(mockEventsDAO. getEventById(1)).thenReturn(Event(1,"go for a walk"))
+        Mockito.`when`(mockEventsDAO. getEventById(1)).thenReturn(Event(1,"go for a walk", group=true, indoor=true))
 
         val service = EventService(mockEventsDAO)
 
@@ -33,7 +31,7 @@ class EventServiceTest() {
     fun eventServiceReturn() {
         //given
         val mockEventsDAO = Mockito.mock(EventsDAO::class.java)
-        Mockito.`when`(mockEventsDAO. getEventById(1)).thenReturn(Event(1,"go for a walk"))
+        Mockito.`when`(mockEventsDAO. getEventById(1)).thenReturn(Event(1,"go for a walk", group=true, indoor=true))
 
         val service = EventService(mockEventsDAO)
 
@@ -41,7 +39,7 @@ class EventServiceTest() {
         val retrievedEvent = service.retrieveEvent(1)
 
         //then
-        val expected = Event(1,"go for a walk")
+        val expected = Event(1,"go for a walk", group=true, indoor=true)
         assert(retrievedEvent.equals(expected))
     }
 

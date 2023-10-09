@@ -1,6 +1,7 @@
 package database
 
 import org.starter.model.Event
+import org.starter.model.UserPreferences
 import java.io.File
 
 class EventsDAO {
@@ -16,8 +17,8 @@ class EventsDAO {
         return reader.lineSequence()
                 .filter { it.isNotBlank() }
                 .map {
-                    val (id, title) = it.split(',', ignoreCase = false, limit = 2)
-                    Event(id.trim().toInt(), title.trim().removeSurrounding("\""))
+                    val (id, title, group, indoor) = it.split(',', ignoreCase = false, limit = 4)
+                    Event(id.trim().toInt(), title.trim().removeSurrounding("\""), group.trim().toBoolean(), indoor.trim().toBoolean())
                 }.toList()
     }
 
@@ -32,6 +33,30 @@ class EventsDAO {
         return events.filter { it.id == id }.first()
     }
 
-    //method to alter the events (add/remove)
+    //method to filter the events (add/remove)
+    fun getFilteredEvents(userPreference:UserPreferences): List<Event> {
+        //give some user preferences, return a list of those in which the values match up
+        return events.filter { it.indoor == userPreference.indoor && it.group == userPreference.group}
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //method for testing, does it need to be [protected] or something?
+    fun getEventsFromNewSource(csv:String): Unit {
+        events = readCsv(csv)
+    }
+
+
 
 }

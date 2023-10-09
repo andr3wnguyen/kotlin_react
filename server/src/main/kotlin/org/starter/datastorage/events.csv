@@ -1,21 +1,21 @@
-"id", "title"
-1,"Go for a run"
-2,"Read a book"
-3,"Cook dinner"
-4,"Write code"
-5,"Learn a new language"
-6,"Call a friend"
-7,"Watch a movie"
-8,"Take a nap"
-9,"Visit a museum"
-10,"Go hiking"
-11,"Do yoga"
-12,"Listen to music"
-13,"Visit the beach"
-14,"Organize your closet"
-15,"Play a game"
-16,"Write in a journal"
-17,"Plant flowers"
-18,"Visit a park"
-19,"Go shopping"
-20,"Have a picnic"
+"id", "title", "group", "indoor"
+1,"Go for a run", false, false
+2,"Read a book", false, true
+3,"Cook dinner", false, true
+4,"Write code", false, true
+5,"Learn a new language", false, true
+6,"Call a friend", true, true
+7,"Watch a movie", false, true
+8,"Take a nap", false, true
+9,"Visit a museum", false, true
+10,"Go hiking", false, false
+11,"Do yoga", false, true
+12,"Listen to music", false, true
+13,"Visit the beach", false, false
+14,"Organize your closet", false, true
+15,"Play a game", false, true
+16,"Write in a journal", false, true
+17,"Plant flowers", false, false
+18,"Visit a park", true, false
+19,"Go shopping", false, false
+20,"Have a picnic", true, false
