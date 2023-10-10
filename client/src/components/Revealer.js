@@ -10,7 +10,7 @@ export default class Revealer extends Component {
 
   render() {
     const { visible } = this.state;
-    const { text, getTextMethod } = this.props; // Add a prop to accept the text
+    const { textList, getTextMethod } = this.props; // Add a prop to accept the text
 
     return (
       <div>
@@ -19,13 +19,23 @@ export default class Revealer extends Component {
           onClick = {() => {this.toggleVisibility(); getTextMethod();}}
         />
         <Divider hidden />
-        <Transition visible={visible} animation='zoom' duration={500}>
-          <h1>{text}</h1> 
-        </Transition>
+        <div>
+        {textList.map((text,index) => (
+          <Transition
+            key={index}
+            visible={visible}
+            animation='zoom'
+            duration={500}
+          >
+            <h1>{text}</h1><br></br>
+          </Transition>
+        ))}
+        </div>
       </div>
     )
   }
-}
+  }
+
 
 
 //random resource

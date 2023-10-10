@@ -13,7 +13,7 @@ function CheckboxExampleRadioGroup(props) {
           radio
           label={props.label1}
           name={props.name}
-          value={props.booleonInt1 == 'true'}
+          value={props.value1 === props.name}
           checked={selectedValue === props.value1}
           onChange={(e, data) => setValue(data.label)}
 
@@ -23,7 +23,7 @@ function CheckboxExampleRadioGroup(props) {
           radio
           label={props.label2}
           name={props.name}
-          value={props.booleanInt2 == 'true'} //had to convert prop to a bool meep meep
+          value={props.value2 === props.name} //had to convert prop to a bool meep meep
           checked={selectedValue === props.value2}
           onChange={(e, data) => setValue(data.label)}
         />

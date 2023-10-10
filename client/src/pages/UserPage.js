@@ -1,30 +1,35 @@
 import React from 'react';
 import CheckBoxOptions from '../components/CheckBoxOptions';
 import { createUserPreferences,pingServer } from '../apis/StarterClient';
-import Revealer from '../components/Revealer';
+// import Revealer from '../components/Revealer';
+import { Button } from 'semantic-ui-react';
 
 class UserPage extends React.Component {
 
-    state = {retreivedEvents:""}
+    state = {retreivedEvents:[]}
 
 
 getEvents = async () => {
 //get the values from the buttons and set the body for the req
 const indoorBool = document.querySelector(
-    'input[name="indoor"]:checked'
+    'input[name="Indoor"]:checked'
   ).value;
 
 const groupBool = document.querySelector(
-    'input[name="group"]:checked'
+    'input[name="Group"]:checked'
 ).value;
 
 const body = {
     "indoor":indoorBool, "group":groupBool
 }
         const response = await createUserPreferences(body);
-        this.setState({retreivedEvents:response.data})
+        const listOfEvents = response.data.map(item => item.title);
+        this.setState({ retreivedEvents: listOfEvents });
+      
         //get this to trigger the revealer
-        console.log(response.data.title)
+        console.log(listOfEvents)
+        console.log(indoorBool, groupBool)
+        
 }
 
 
@@ -34,31 +39,34 @@ const body = {
                 <h1>Things to do.</h1>
                 <p>{this.props.text}</p>
                 <CheckBoxOptions
-                name='indoor'
+                name='Indoor'
                 value1='Indoor'
                 value2='Outdoor'
                 label1='Indoor'
                 label2='Outdoor'
-                booleanInt1={true}
-                booleanInt2={false}
                 onValueChange={(value) => {
                     console.log('Selected value:', value);
                 }}
                 />
                 <CheckBoxOptions
-                name='group'
+                name='Group'
                 value1='Alone'
                 value2='Group'
                 label1='Alone'
                 label2='Group'
-                boolean1={true}
-                boolean2={false}
                 onValueChange={(value) => {
                     console.log('Selected value:', value);
                 }}
                 />
                 
-                <Revealer text={this.state.retreivedEvents.title} getTextMethod={this.getEvents}/>
+                <Button onClick={this.getEvents}>Get Events</Button>
+
+                <div>
+                {this.state.retreivedEvents.map((event, index) => (
+                    <div key={index}>{event}</div>
+                ))}
+                </div>
+
             </div>
         );
     }
