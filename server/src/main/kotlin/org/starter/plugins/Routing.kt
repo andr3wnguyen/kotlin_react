@@ -28,14 +28,13 @@ fun Application.configureRouting(eventService: EventService) {
         //make a post of user preferences and return an event from the eventDAO
         post("/preference") {
             val userPreferences = call.receive<UserPreferences>()
-            //add code to do something
-            val retrievedEvent = eventService.retrieveEvent(1)
+            val retrievedEvents = eventService.retrieveEvents(userPreferences)
             call.response.status(HttpStatusCode.OK)
-            call.respond(retrievedEvent)
+            call.respond(retrievedEvents)
         }
 
-        get("/preference") {
-            val event = eventService.retrieveEvent(1)
+        get("/allEvents") {
+            val event = eventService.retrieveAllEvents()
             call.respond(event)
         }
     }
