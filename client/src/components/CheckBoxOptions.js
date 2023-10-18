@@ -27,6 +27,15 @@ function CheckboxExampleRadioGroup(props) {
           checked={selectedValue === props.value2}
           onChange={(e, data) => setValue(data.label)}
         />
+                {/* <br></br> */}
+        {/* <Checkbox
+          radio
+          label='No preference'
+          name={props.name}
+          value= {false} //had to convert prop to a bool meep meep
+          checked={selectedValue === "No preference"}
+          onChange={(e, data) => setValue(data.label)}
+        /> */}
       </Form.Field>
       <br></br>
     </Form>
