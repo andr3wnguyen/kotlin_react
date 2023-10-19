@@ -5,7 +5,7 @@ import org.starter.model.UserPreferences
 import java.io.File
 
 class EventsDAO {
-//TODO why is this csv file path so janky
+    //TODO why is this csv file path so janky
     private var events: List<Event> = readCsv("src/main/kotlin/org/starter/datastorage/events.csv")
 
     //method to populate the list of events https://www.baeldung.com/kotlin/csv-files
@@ -15,11 +15,16 @@ class EventsDAO {
         val reader = contents.bufferedReader()
         val header = reader.readLine()
         return reader.lineSequence()
-                .filter { it.isNotBlank() }
-                .map {
-                    val (id, title, group, indoor) = it.split(',', ignoreCase = false, limit = 4)
-                    Event(id.trim().toInt(), title.trim().removeSurrounding("\""), group.trim().toBoolean(), indoor.trim().toBoolean())
-                }.toList()
+            .filter { it.isNotBlank() }
+            .map {
+                val (id, title, group, indoor) = it.split(',', ignoreCase = false, limit = 4)
+                Event(
+                    id.trim().toInt(),
+                    title.trim().removeSurrounding("\""),
+                    group.trim().removeSurrounding("\""),
+                    indoor.trim().removeSurrounding("\"")
+                )
+            }.toList()
     }
 
     //method to get the events
@@ -29,34 +34,53 @@ class EventsDAO {
     }
 
     //method to get one event
-    fun getEventById(id:Int): Event {
+    fun getEventById(id: Int): Event {
         return events.filter { it.id == id }.first()
     }
 
     //method to filter the events (add/remove)
-    fun getFilteredEvents(userPreference:UserPreferences): List<Event> {
+    fun getFilteredEvents(userPreference: UserPreferences): List<Event> {
         //give some user preferences, return a list of those in which the values match up
-        return events.filter { it.indoor == userPreference.indoor && it.group == userPreference.group}
+
+        val filters = sequenceOf(
+            mapOf("indoor" to checkFilterOrNot(userPreference.indoor)),
+            mapOf("group" to checkFilterOrNot(userPreference.group))
+        )
+
+        var filteredEvents = events
+
+        for (filter in filters) {
+            val key = filter.keys.first()
+            val value = filter[key]
+
+            //if there is a value, filter that key, if not then set true and move onto next filter.
+            if (value?.isNotEmpty() == true) {
+                // Apply the filter conditionally
+                filteredEvents = filteredEvents.filter {
+                    when (key) {
+                        "indoor" -> it.indoor == value
+                        "group" -> it.group == value
+                        else -> true // Handle other columns as needed
+                    }
+                }
+            }
+        }
+
+// Update the 'events' list with the filtered result
+        return filteredEvents
     }
 
 
-
-
-
-
-
-
-
-
-
-
+    fun checkFilterOrNot(userPreference: String): String {
+        //check if uP noP - if it is then do nothing
+        return if (userPreference == "No Preference") "" else userPreference
+    }
 
 
     //method for testing, does it need to be [protected] or something?
-    fun getEventsFromNewSource(csv:String): Unit {
+    fun getEventsFromNewSource(csv: String): Unit {
         events = readCsv(csv)
     }
-
 
 
 }

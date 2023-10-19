@@ -5,6 +5,6 @@ import kotlinx.serialization.Serializable
 data class Event(
         val id: Int,
         val title: String,
-        val group: Boolean,
-        val indoor: Boolean,
+        val group: String,
+        val indoor: String,
 )

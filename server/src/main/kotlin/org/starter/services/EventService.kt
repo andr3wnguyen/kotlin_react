@@ -15,7 +15,9 @@ class EventService(private val eventDAO:EventsDAO) {
 
     fun retrieveEvents(userPreferences: UserPreferences): List<Event> {
         val event = eventDAO.getFilteredEvents(userPreferences)
+        logger.info("User preferences: $userPreferences")
         logger.info("Events retrieved: $event")
+
         return event
     }
 

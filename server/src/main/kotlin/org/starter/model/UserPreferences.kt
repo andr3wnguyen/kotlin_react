@@ -4,8 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class UserPreferences(
-    val group: Boolean,
-    val indoor: Boolean
+    val group: String,
+    val indoor: String
 
 )
 
