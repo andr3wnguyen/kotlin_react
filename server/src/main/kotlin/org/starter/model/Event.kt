@@ -7,4 +7,6 @@ data class Event(
         val title: String,
         val group: String,
         val indoor: String,
+        val description: String,
+        val image: String
 )

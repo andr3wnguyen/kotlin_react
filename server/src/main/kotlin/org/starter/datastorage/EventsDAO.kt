@@ -17,13 +17,24 @@ class EventsDAO {
         return reader.lineSequence()
             .filter { it.isNotBlank() }
             .map {
-                val (id, title, group, indoor) = it.split(',', ignoreCase = false, limit = 4)
+//                val (id, title, group, indoor,description,image) = it.split(',', ignoreCase = false, limit = 6)
+//                Event(
+//                    id.trim().toInt(),
+//                    title.trim().removeSurrounding("\""),
+//                    group.trim().removeSurrounding("\""),
+//                    indoor.trim().removeSurrounding("\""),
+//                    description.trim().removeSurrounding("\""),
+//                    image.trim().removeSurrounding("\""),
+                val fields = it.split(',', ignoreCase = false, limit = 6)
                 Event(
-                    id.trim().toInt(),
-                    title.trim().removeSurrounding("\""),
-                    group.trim().removeSurrounding("\""),
-                    indoor.trim().removeSurrounding("\"")
+                    fields[0].trim().toInt(),
+                    fields[1].trim().removeSurrounding("\""),
+                    fields[2].trim().removeSurrounding("\""),
+                    fields[3].trim().removeSurrounding("\""),
+                    fields[4].trim().removeSurrounding("\""),
+                    fields[5].trim().removeSurrounding("\""),
                 )
+
             }.toList()
     }
 
@@ -65,8 +76,6 @@ class EventsDAO {
                 }
             }
         }
-
-// Update the 'events' list with the filtered result
         return filteredEvents
     }
 
