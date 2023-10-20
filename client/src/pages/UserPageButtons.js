@@ -2,6 +2,8 @@ import React from 'react';
 import { Tab, Button } from 'semantic-ui-react';
 import OptionButtons from '../components/OptionButtons';
 import { createUserPreferences } from '../apis/StarterClient';
+import ItemExampleHeaders from '../components/Items';
+import { Routes, Route, Outlet } from 'react-router-dom';
 
 class UserPageButtons extends React.Component {
 
@@ -18,15 +20,23 @@ class UserPageButtons extends React.Component {
         "indoor":indoor, "group":group
     }
       const response = await createUserPreferences(body);
-      const listOfEvents = response.data.map(item => item.title);
+      const listOfEvents = response.data.map(item => ({
+        id: item.id,
+        title: item.title,
+        description: item.description,
+        image: item.image
+      }));
+      
       this.setState({ retreivedEvents: listOfEvents });
     
             console.log(listOfEvents)
+            console.log(body)
+            console.log(this.state.retreivedEvents)
             
     }
 
         onSelectionChange = (name, selection) => {
-            const userSelection = selection === 'No Preference' ? 'No Preference' : selection === name;
+            const userSelection = selection === 'No Preference' ? 'No Preference' : selection.toLowerCase();
         this.setState({[name]: userSelection}); 
     };
     
@@ -60,11 +70,27 @@ class UserPageButtons extends React.Component {
 
                 <br></br>
                 <Button onClick={this.getEvents}>Get Events</Button>
+                <br></br>
 
-                {this.state.retreivedEvents.map((event, index) => (
+                {/* {this.state.retreivedEvents.map((event, index) => (
                     <div key={index}>{event}</div>
-                ))}
-       
+                ))} */}
+
+
+                {this.state.retreivedEvents.length > 0 ? (
+                this.state.retreivedEvents.map((event, index) => (
+                <ItemExampleHeaders
+                    key={index} 
+                    image={event.image}
+                    description={event.description}
+                    title={event.title}
+                />
+                ))
+            ):(
+                <p>Nothing to do</p>
+            )}
+
+
             </div >
             
 
