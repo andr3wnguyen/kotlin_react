@@ -33,7 +33,7 @@ fun Application.configureRouting(eventService: EventService) {
             call.respond(retrievedEvents)
         }
 
-        get("/allEvents") {
+        get("/allevents") {
             val event = eventService.retrieveAllEvents()
             call.respond(event)
         }
