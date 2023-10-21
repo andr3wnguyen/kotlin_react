@@ -65,17 +65,9 @@ class UserPageButtons extends React.Component {
                 />
 
 
-
-
-
                 <br></br>
                 <Button onClick={this.getEvents}>Get Events</Button>
                 <br></br>
-
-                {/* {this.state.retreivedEvents.map((event, index) => (
-                    <div key={index}>{event}</div>
-                ))} */}
-
 
                 {this.state.retreivedEvents.length > 0 ? (
                 this.state.retreivedEvents.map((event, index) => (
@@ -87,7 +79,7 @@ class UserPageButtons extends React.Component {
                 />
                 ))
             ):(
-                <p>Nothing to do</p>
+                <div></div>
             )}
 
 

@@ -24,6 +24,6 @@ export const createUserPreferences = async (preference) => {
     return await StarterClient.post('preference', preference);
 };
 
-export const getEvent = async () => {
-    return await StarterClient.get('preference');
+export const getEvents = async () => {
+    return await StarterClient.get('allevents');
 };
