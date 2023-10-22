@@ -34,7 +34,7 @@ class eventsDAOTest {
         val databaseEvent = eventsDAO.getEventById(1)
 
         //then
-        val expected = Event(1, "go for a walk", group = true, indoor = true)
+        val expected = Event(1, "go for a walk", group = "group", indoor = "outdoor", "none","none")
         assert(databaseEvent == expected)
     }
 
@@ -47,8 +47,8 @@ class eventsDAOTest {
         eventsDAO.getEventsFromNewSource("src/test/kotlin/org/starter/datastorage/testfile.csv")
 
         //when
-        val userPreferences = UserPreferences(group = false, indoor = true)
-        val expected = listOf(Event(2, "go be alone inside", group = false, indoor = true))
+        val userPreferences = UserPreferences(group = "alone", indoor = "indoor")
+        val expected = listOf(Event(2, "go be alone inside", group = "alone", indoor = "indoor", description="none", image="none"))
         val actual = eventsDAO.getFilteredEvents(userPreferences)
 
 

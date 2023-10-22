@@ -26,4 +26,11 @@ class EventService(private val eventDAO:EventsDAO) {
         logger.info("Events retrieved: $event")
         return event
     }
+
+    fun retrieveSingleEvent(eventId:Int): Event {
+        //this should be passed an id from the buttons frmo the preference that is pressed (somehow)
+        val event = eventDAO.getEventById(eventId)
+        logger.info("Event retrieved: $event")
+        return event
+    }
 }

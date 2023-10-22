@@ -1,4 +1,4 @@
-"id", "title", "group", "indoor"
-1, "go for a walk", true, true
-2, "go be alone inside", false, true
-3, "go outside with your friend", true, false
+"id", "title", "group", "indoor", "description", "image"
+1, "go for a walk", "group", "outdoor", "none", "none"
+2, "go be alone inside", "alone", "indoor","none", "none"
+3, "go outside with your friend", "group", "indoor", "none", "none"

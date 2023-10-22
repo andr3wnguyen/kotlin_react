@@ -24,7 +24,7 @@ fun Application.configureRouting(eventService: EventService) {
             val pong = Pong(ping.message, ping.number)
             call.respond(pong)
         }
-//TODO change this post method to now accept pref and pass to new preferential filter method
+
         //make a post of user preferences and return an event from the eventDAO
         post("/preference") {
             val userPreferences = call.receive<UserPreferences>()
@@ -35,6 +35,12 @@ fun Application.configureRouting(eventService: EventService) {
 
         get("/allevents") {
             val event = eventService.retrieveAllEvents()
+            call.respond(event)
+        }
+
+        post("/event") {
+            val desiredEvent = call.receive<Int>()
+            val event = eventService.retrieveSingleEvent(desiredEvent)
             call.respond(event)
         }
     }
