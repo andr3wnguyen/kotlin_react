@@ -5,7 +5,7 @@ import { createUserPreferences } from '../apis/StarterClient';
 import ItemExampleHeaders from '../components/Items';
 import { Routes, Route, Outlet } from 'react-router-dom';
 
-class UserPageButtons extends React.Component {
+class GetEventsPage extends React.Component {
 
     state = {retreivedEvents:[], 
     Group:"No Preference",
@@ -90,4 +90,4 @@ class UserPageButtons extends React.Component {
     )}
 }
 
-export default UserPageButtons;
+export default GetEventsPage;

@@ -27,3 +27,7 @@ export const createUserPreferences = async (preference) => {
 export const getEvents = async () => {
     return await StarterClient.get('allevents');
 };
+
+export const getEventInfo = async (eventId) => {
+    return await StarterClient.post("event",eventId);
+}

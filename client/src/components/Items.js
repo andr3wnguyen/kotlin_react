@@ -9,7 +9,10 @@ const ItemExampleHeaders = (props) => (
         <Item.Header as='a'>{props.title}</Item.Header>
         <Item.Description>{props.description}</Item.Description>
         <Item.Extra>
+{/* this button should take to another page with more info 
+TODO add an onclick that re-routes to more info page and loads the id */}
           <Button floated='right'>More info</Button>
+      
         </Item.Extra>
       </Item.Content>
     </Item>
