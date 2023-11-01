@@ -32,8 +32,10 @@ class AllEvents extends React.Component {
 
 
     render() {
+        const { changePage } = this.props;
         return (
           <div>
+            <Button onClick={()=> changePage("homePage")}>click</Button>
             <Button onClick={this.getAllEvents}>See all events</Button>
             {/* might need to play with this ui but put in a grid for now */}
             <div style={{ marginTop: '40px' }}>
