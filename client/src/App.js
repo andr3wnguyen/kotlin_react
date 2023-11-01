@@ -3,13 +3,18 @@ import MainPage from './pages/MainPage';
 import AllEvents from './pages/AllEventsPage';
 import HomepageLayout from './pages/HomePage';
 import GetEventsPage from './pages/GetEventsPage';
+import EventInfo from './pages/EventInfo';
 
 class App extends React.Component {
 
-  state = {currentPage: 'allEvents'}
+  state = { currentPage: null, eventId: null }
 
-  changePage = (newPage) => {
-    this.setState({ currentPage: newPage });
+  changePage = (newPage, id) => {
+    if (newPage === "eventInfo") {
+      this.setState({ currentPage: newPage, eventId: id });
+    } else {
+      this.setState({ currentPage: newPage });
+    }
   }
 
 
@@ -26,8 +31,12 @@ class App extends React.Component {
             return <HomepageLayout changePage={this.changePage}/>;
         case 'getEventsPage':
             return <GetEventsPage changePage={this.changePage}/>;
-        // default:
-        //     return <HomepageLayout changePage={this.changePage}/>;
+                    case 'getEventsPage':
+            return <GetEventsPage changePage={this.changePage}/>;
+            case 'eventInfo':
+              return <EventInfo changePage={this.changePage} eventId={this.state.eventId} />;
+        default:
+            return <HomepageLayout changePage={this.changePage}/>;
     }
 }
 

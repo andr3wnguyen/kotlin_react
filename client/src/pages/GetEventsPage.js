@@ -41,10 +41,13 @@ class GetEventsPage extends React.Component {
     };
     
     render() {
+        const { changePage } = this.props;
         return (
             <div className="ui container">
-                <h1 className="ui centered header">Starter project</h1>
-                <h1>Things to do.</h1>
+                <h1 className="ui centered header">Find an event</h1>
+
+<Button onClick={()=> changePage("homePage")}>Home</Button>
+                <h1>Set your preferences</h1>
                 <p>{this.props.text}</p>
 
                 <OptionButtons
@@ -76,12 +79,13 @@ class GetEventsPage extends React.Component {
                     image={event.image}
                     description={event.description}
                     title={event.title}
+                    id={event.id}
+                    changePage={changePage}
                 />
                 ))
             ):(
                 <div></div>
             )}
-
 
             </div >
             

@@ -11,7 +11,9 @@ const ItemExampleHeaders = (props) => (
         <Item.Extra>
 {/* this button should take to another page with more info 
 TODO add an onclick that re-routes to more info page and loads the id */}
-          <Button floated='right'>More info</Button>
+          {/* <Button floated='right' id={props.id} onClick={()=> props.changePage("eventInfo", {eventId:props.id})}>More info</Button> */}
+          <Button floated='right' id={props.id} onClick={() => props.changePage("eventInfo", props.id)}>More info</Button>
+
       
         </Item.Extra>
       </Item.Content>
