@@ -15,7 +15,7 @@ const EventCard = (props) => (
   <Card>
     <Image src={props.image} wrapped ui={false} />
     <Card.Content>
-      <Card.Header as='a'>{props.title}</Card.Header>
+      <Card.Header as='a' onClick={()=> props.changePage('eventInfo', props.id)}>{props.title}</Card.Header>
       {/* <Card.Meta>Joined in 2016</Card.Meta> */}
       <Card.Description>
         {props.description}

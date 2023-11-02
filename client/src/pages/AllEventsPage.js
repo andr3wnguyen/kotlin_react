@@ -51,6 +51,8 @@ class AllEvents extends React.Component {
                       image={event.image}
                       description={event.description}
                       title={event.title}
+                      id={event.id}
+                      changePage={changePage}
                     />
                   </Grid.Column>
                 ))}

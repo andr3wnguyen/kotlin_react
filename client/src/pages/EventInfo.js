@@ -35,7 +35,7 @@ class EventInfo extends React.Component {
             
 
             <div>
-                <Button onClick={() =>{this.getEventInfo(eventId)}}>See all events</Button>
+                <Button onClick={() =>changePage("homePage")}>Home</Button>
                 {this.state.retreivedEvent.title ? ( // Check if 'title' property exists before rendering
                     <div>
                         <h1>{this.state.retreivedEvent.title}</h1>
