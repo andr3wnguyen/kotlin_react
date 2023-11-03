@@ -1,7 +1,7 @@
 import React from 'react'
 import { Item,Button } from 'semantic-ui-react'
 
-const ItemExampleHeaders = (props) => (
+const Items = (props) => (
   <Item.Group>
     <Item>
       <Item.Image size='tiny' src={props.image} />
@@ -22,7 +22,7 @@ TODO add an onclick that re-routes to more info page and loads the id */}
   </Item.Group>
 )
 
-export default ItemExampleHeaders
+export default Items
 
 //https://react.semantic-ui.com/views/item/#variations-floated
 //https://react.semantic-ui.com/views/item/#content-headers

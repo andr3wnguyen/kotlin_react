@@ -5,18 +5,15 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { InView } from 'react-intersection-observer'
 import {
+  Image,
   Button,
   Container,
-  Divider,
-  Grid,
   Header,
   Icon,
-  Image,
-  List,
   Menu,
-  Segment,
-  Sidebar,
+  Segment
 } from 'semantic-ui-react'
+import balloonup from '../images/balloonup.png'
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -43,9 +40,10 @@ const HomepageHeading = ({ changePage }) => (
         marginTop: '3em',
       }}
     />
+        <Image src={balloonup}/>
     <Header
       as='h2'
-      content='Get something to do.'
+      content='Adventure is out there...'
       inverted
       style={{
         fontSize: '1.7em',
@@ -100,17 +98,13 @@ class DesktopContainer extends Component {
               size='large'
             >
               <Container>
-                <Menu.Item as='a' active>Home</Menu.Item>
-                <Menu.Item as='a' onClick={()=> changePage('getEventsPage')}>Find Events</Menu.Item>
-                <Menu.Item as='a' onClick={()=> changePage('allEvents')}>All Events</Menu.Item>
-                <Menu.Item position='right'>
+            
                   <Button as='a' inverted={!fixed}>
                     Log in
                   </Button>
                   <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
                     Sign Up
                   </Button>
-                </Menu.Item>
               </Container>
             </Menu>
             <HomepageHeading changePage={changePage}/>
@@ -128,7 +122,7 @@ const HomepageLayout = ({changePage}) => (
   <div>
 
 <DesktopContainer changePage={changePage}></DesktopContainer>
-<HomepageHeading changePage={changePage} />
+{/* <HomepageHeading changePage={changePage} /> */}
 
   </div>
 )

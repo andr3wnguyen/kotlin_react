@@ -4,10 +4,11 @@ import AllEvents from './pages/AllEventsPage';
 import HomepageLayout from './pages/HomePage';
 import GetEventsPage from './pages/GetEventsPage';
 import EventInfo from './pages/EventInfo';
+import TopHeader from './components/TopHeader';
 
 class App extends React.Component {
 
-  state = { currentPage: null, eventId: null }
+  state = { currentPage: "homePage", eventId: null }
 
   changePage = (newPage, id) => {
     if (newPage === "eventInfo") {
@@ -41,9 +42,10 @@ class App extends React.Component {
 }
 
 render() {
+  const { currentPage } = this.state;
   return (
       <div className="ui container">
-
+        {currentPage !== 'homePage' ?  <TopHeader changePage={this.changePage}/>: null}
           {this.renderPage()}
       </div>
   );

@@ -1,9 +1,8 @@
 import React from 'react';
-import { Tab, Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import OptionButtons from '../components/OptionButtons';
 import { createUserPreferences } from '../apis/StarterClient';
-import ItemExampleHeaders from '../components/Items';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import Items from '../components/Items';
 
 class GetEventsPage extends React.Component {
 
@@ -44,9 +43,8 @@ class GetEventsPage extends React.Component {
         const { changePage } = this.props;
         return (
             <div className="ui container">
+                <br/>
                 <h1 className="ui centered header">Find an event</h1>
-
-<Button onClick={()=> changePage("homePage")}>Home</Button>
                 <h1>Set your preferences</h1>
                 <p>{this.props.text}</p>
 
@@ -74,7 +72,7 @@ class GetEventsPage extends React.Component {
 
                 {this.state.retreivedEvents.length > 0 ? (
                 this.state.retreivedEvents.map((event, index) => (
-                <ItemExampleHeaders
+                <Items
                     key={index} 
                     image={event.image}
                     description={event.description}

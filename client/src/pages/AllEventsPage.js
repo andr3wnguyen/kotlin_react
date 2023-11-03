@@ -1,8 +1,6 @@
 import React from 'react';
 import { Grid, Button } from 'semantic-ui-react';
 import { getEvents } from '../apis/StarterClient';
-import ItemExampleHeaders from '../components/Items';
-import { Routes, Route, Outlet } from 'react-router-dom';
 import EventCard from '../components/EventCards';
 
 
@@ -39,8 +37,6 @@ class AllEvents extends React.Component {
         const { changePage } = this.props;
         return (
           <div>
-            <Button onClick={()=> changePage("homePage")}>Home</Button>
-            
             {/* //searchbar to return x events?  */}
             {/* might need to play with this ui but put in a grid for now */}
             <div style={{ marginTop: '40px' }}>

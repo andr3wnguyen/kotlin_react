@@ -1,7 +1,8 @@
 import React from 'react';
-import { Tab, Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import { getEventInfo, getEvents } from '../apis/StarterClient';
-import ItemExampleHeaders from '../components/Items';
+import EventInfoCard from '../components/EventInfoCard';
+import TopHeader from '../components/TopHeader';
 
 
 //calls the get method -> set the get in routing in server,  -> create api call -> call the api and get response -> make sure server is running
@@ -30,21 +31,31 @@ class EventInfo extends React.Component {
 
 
     render() {
-        const { changePage, eventId } = this.props;
+        const { changePage } = this.props;
         return (
             
 
             <div>
-                <Button onClick={() =>changePage("homePage")}>Home</Button>
                 {this.state.retreivedEvent.title ? ( // Check if 'title' property exists before rendering
-                    <div>
-                        <h1>{this.state.retreivedEvent.title}</h1>
-                        <p>{this.state.retreivedEvent.description}</p>
+                    <div 
+                    style={{   display: 'flex',          // Use flexbox for centering
+                    justifyContent: 'center',  // Center horizontally  
+                    height: '10vh' }}>
+                        <EventInfoCard
+                        image={this.state.retreivedEvent.image}
+                        description={this.state.retreivedEvent.description}
+                        title={this.state.retreivedEvent.title}
+                        longdescription={this.state.retreivedEvent.longdescription}  
+                        />
+                        {/* <h1>{this.state.retreivedEvent.title}</h1>
+                        <p>{this.state.retreivedEvent.description}</p> */}
                     </div>
                 ) : (
                     <div>No event details available</div>
                 )}
+                
             </div>
+            
         );
     }
 }
