@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header, Image } from 'semantic-ui-react'
-import lorddoge from '../images/lorddoge.jpg'
+import dugup from '../images/dugup.jpeg'
 import Navbar from './Navbar';
 
 //to make picture circular 
@@ -26,14 +26,14 @@ const TopHeader = (props) => (
             <Image
             style={imgStyle}
             size='small'
-            src={lorddoge}
+            src={dugup}
             />
          </div>
     </div>
 </div>
     
     <Navbar changePage={props.changePage}></Navbar>
-    
+
     </div>
 )
 // public/images/roads.jpeg/Users/nguyena6/kotlin/kotlin/client/public/images/roads.jpeg
