@@ -13,7 +13,8 @@ import {
   Menu,
   Segment
 } from 'semantic-ui-react'
-import balloonup from '../images/upballoonnobg.jpeg'
+import balloonup from '../images/upballoonnobg.png'
+
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -24,7 +25,7 @@ const { MediaContextProvider, Media } = createMedia({
 })
 
 const balloonStyle = {
-    opacity:0.5,
+    opacity:0.9,
 };
 /* Heads up!
  * HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled

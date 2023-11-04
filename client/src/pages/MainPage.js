@@ -5,7 +5,6 @@ import GetEventsPage from './GetEventsPage';
 import HomepageLayout from './HomePage';
 import AllEvents from './AllEventsPage';
 import EventInfo from './EventInfo';
-import { Link } from 'react-router-dom'; // Import Link
 
 class MainPage extends React.Component {
 

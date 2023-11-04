@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from 'semantic-ui-react';
 
 
-const ButtonExampleMultipleConditionals = (props) => {
+const OptionButtons = (props) => {
     const [selectedButton, setSelectedButton] = useState('No Preference');
 
     const onClick = (e, data) => {
@@ -37,6 +37,6 @@ const ButtonExampleMultipleConditionals = (props) => {
         </div>
     );
 };
-export default ButtonExampleMultipleConditionals;
+export default OptionButtons;
 
 //https://react.semantic-ui.com/elements/button/#content-multiple-conditionals
