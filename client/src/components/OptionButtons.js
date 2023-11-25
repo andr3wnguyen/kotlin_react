@@ -26,7 +26,7 @@ const OptionButtons = (props) => {
 
     return (
         <div>
-            <Button.Group>
+            <Button.Group widths={2} style={{ width: '40%' }}>
                 {renderButton(props.name, props.value1)}
                 <Button.Or />
                 {renderButton(props.name, props.value2)}

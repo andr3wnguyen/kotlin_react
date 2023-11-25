@@ -7,21 +7,38 @@ import Items from '../components/Items';
 class GetEventsPage extends React.Component {
 
     state = {retreivedEvents:[], 
-    Group:"No Preference",
-    Indoor:"No Preference"}
+    Climate:"No Preference",
+    Historical:"No Preference",
+    Urban:"No Preference",
+    Activities:"No Preference",
+    Scenery:"No Preference",
+    Budget:"No Preference",
+    Vibe:"No Preference"}
 
 
     getEvents = async () => {
-      const group = this.state.Group
-      const indoor = this.state.Indoor
+      const climate = this.state.Group
+      const historical = this.state.Indoor
+      const urban = this.state.Urban
+      const activities = this.state.Activities
+      const scenery = this.state.Scenery
+      const budget = this.state.Budget
+      const vibe = this.state.Vibe
 
       const body = {
-        "indoor":indoor, "group":group
+        "climate":climate, 
+        "historical":historical,
+        "urban": urban,
+        "activities": activities,
+        "scenery": scenery,
+        "budget": budget,
+        "vibe": vibe
     }
       const response = await createUserPreferences(body);
       const listOfEvents = response.data.map(item => ({
         id: item.id,
-        title: item.title,
+        activity: item.activity,
+        location: item.location,
         description: item.description,
         image: item.image
       }));
@@ -47,24 +64,62 @@ class GetEventsPage extends React.Component {
                 <h1 className="ui centered header">Find an event</h1>
                 <h1>Set your preferences</h1>
                 <p>{this.props.text}</p>
-
                 <OptionButtons
-                name='Group'
-                value1='Alone'
+                name='Climate'
+                value1='Hot'
                 value2='No Preference'
-                value3='Group'
-                onSelectionChange={this.onSelectionChange}
-                />
-                <br></br>
-
-                <OptionButtons
-                name='Indoor'
-                value1='Indoor'
-                value2='No Preference'
-                value3='Outdoor'
+                value3='Cold'
                 onSelectionChange={this.onSelectionChange}
                 />
 
+                <OptionButtons
+                name='Historical'
+                value1='Modern'
+                value2='No Preference'
+                value3='Ancient'
+                onSelectionChange={this.onSelectionChange}
+                />
+
+                <OptionButtons
+                name='Urban'
+                value1='City'
+                value2='No Preference'
+                value3='Rural'
+                onSelectionChange={this.onSelectionChange}
+                />
+
+                <OptionButtons
+                name='Activities'
+                value1='Adventure'
+                value2='No Preference'
+                value3='Relaxation'
+                onSelectionChange={this.onSelectionChange}
+                />
+
+                <OptionButtons
+                name='Scenery'
+                value1='Beaches'
+                value2='No Preference'
+                value3='Mountains'
+                onSelectionChange={this.onSelectionChange}
+                />      
+
+                <OptionButtons
+                name='Budget'
+                value1='Budget-friendly'
+                value2='No Preference'
+                value3='Luxury'
+                onSelectionChange={this.onSelectionChange}
+                />      
+
+
+                <OptionButtons
+                name='Vibe'
+                value1='Party'
+                value2='No Preference'
+                value3='Tranquility'
+                onSelectionChange={this.onSelectionChange}
+                />      
 
                 <br></br>
                 <Button onClick={this.getEvents}>Get Events</Button>
