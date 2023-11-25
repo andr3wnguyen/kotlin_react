@@ -1,4 +1,4 @@
-"id", "title", "group", "indoor", "description", "image"
-1, "go for a walk", "group", "outdoor", "none", "none"
-2, "go be alone inside", "alone", "indoor","none", "none"
-3, "go outside with your friend", "group", "indoor", "none", "none"
+"id", "activity", "location", "climate", "historical", "urban", "activities", "scenery", "budget", "vibe", "description", "image"
+1,"Hiking","Swiss Alps","cold","ancient","rural","adventure","mountains","luxury","tranquility","Explore the breathtaking Swiss Alps through scenic hiking trails.","https://deih43ym53wif.cloudfront.net/small_zermatt-matterhorn-switzerland-shutterstock_1298208013_44fea015e5.jpeg"
+2,"Safari","Maasai Mara, Kenya","hot","ancient","rural","adventure","plains","luxury","tranquility","Embark on a thrilling safari in the Maasai Mara, home to diverse wildlife.","https://upload.wikimedia.org/wikipedia/commons/1/17/Masai_Mara_at_Sunset.jpg"
+3,"Beach Relaxation","Bora Bora, French Polynesia","hot","modern","rural","relaxation","beaches","luxury","tranquility","Unwind on the pristine beaches of Bora Bora surrounded by crystal-clear waters.","https://www.tahititourisme.fr/app/uploads/2023/06/bora-bora-la-perle-du-pacifique-a-stephane-mailion-photography.webp"
