@@ -9,30 +9,22 @@ class GetEventsPage extends React.Component {
     state = {retreivedEvents:[], 
     Climate:"No Preference",
     Historical:"No Preference",
-    Urban:"No Preference",
     Activities:"No Preference",
-    Scenery:"No Preference",
-    Budget:"No Preference",
-    Vibe:"No Preference"}
+    Budget:"No Preference"
+}
 
 
     getEvents = async () => {
       const climate = this.state.Climate
       const historical = this.state.Historical
-      const urban = this.state.Urban
       const activities = this.state.Activities
-      const scenery = this.state.Scenery
       const budget = this.state.Budget
-      const vibe = this.state.Vibe
 
       const body = {
         "climate":climate, 
         "historical":historical,
-        "urban": urban,
         "activities": activities,
-        "scenery": scenery,
         "budget": budget,
-        "vibe": vibe
     }
       const response = await createUserPreferences(body);
       const listOfEvents = response.data.map(item => ({
@@ -80,13 +72,6 @@ class GetEventsPage extends React.Component {
                 onSelectionChange={this.onSelectionChange}
                 />
 
-                <OptionButtons
-                name='Urban'
-                value1='City'
-                value2='No Preference'
-                value3='Rural'
-                onSelectionChange={this.onSelectionChange}
-                />
 
                 <OptionButtons
                 name='Activities'
@@ -95,31 +80,16 @@ class GetEventsPage extends React.Component {
                 value3='Relaxation'
                 onSelectionChange={this.onSelectionChange}
                 />
+   
 
                 <OptionButtons
-                name='Scenery'
-                value1='Beaches'
-                value2='No Preference'
-                value3='Mountains'
-                onSelectionChange={this.onSelectionChange}
-                />      
-
-                <OptionButtons
-                name='budget'
+                name='Budget'
                 value1='Budget-friendly'
                 value2='No Preference'
                 value3='Luxury'
                 onSelectionChange={this.onSelectionChange}
                 />      
 
-
-                <OptionButtons
-                name='Vibe'
-                value1='Party'
-                value2='No Preference'
-                value3='Tranquility'
-                onSelectionChange={this.onSelectionChange}
-                />      
 
                 <br></br>
                 <Button onClick={this.getEvents}>Get Events</Button>
@@ -131,7 +101,8 @@ class GetEventsPage extends React.Component {
                     key={index} 
                     image={event.image}
                     description={event.description}
-                    title={event.title}
+                    location={event.location}
+                    activity={event.activity}
                     id={event.id}
                     changePage={changePage}
                 />

@@ -6,8 +6,8 @@ const Items = (props) => (
     <Item>
       <Item.Image size='tiny' src={props.image} />
       <Item.Content verticalAlign='middle'>
-        <Item.Header as='a'>{props.title}</Item.Header>
-        <Item.Description>{props.description}</Item.Description>
+        <Item.Header as='a'>{props.location}</Item.Header>
+        <Item.Description>{props.activity}</Item.Description>
         <Item.Extra>
 {/* this button should take to another page with more info 
 TODO add an onclick that re-routes to more info page and loads the id */}
