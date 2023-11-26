@@ -1,6 +1,6 @@
 "id","activity","location","climate","historical","activities","budget","description","image"
-1,"Hiking","Machu Picchu - Peru","hot","modern","adventure","budget-friendly","Explore the ancient ruins of Machu Picchu through a thrilling hiking adventure.","server/src/main/resources/images/machupicchu.jpg"
-2,"Scuba diving","Auckland - New Zealand","hot","modern","adventure","luxury","Experience luxury scuba diving in the beautiful waters off the coast of Auckland.","resources/images/scubaauckland.jpeg"
+1,"Hiking","Machu Picchu - Peru","hot","modern","adventure","budget-friendly","Explore the ancient ruins of Machu Picchu through a thrilling hiking adventure.","../server/src/main/resources/images/machupicchu.jpg"
+2,"Scuba diving","Auckland - New Zealand","hot","modern","adventure","luxury","Experience luxury scuba diving in the beautiful waters off the coast of Auckland.","/resources/images/scubaauckland.jpeg"
 3,"Skiing","Aspen - Colorado","cold","modern","relaxation","budget-friendly","Combine relaxation and adventure with a budget-friendly skiing trip to Aspen.","resources/images/skiiaspen.jpeg"
 4,"Surfing","Bali - Indonesia","hot","ancient","relaxation","luxury","Indulge in luxury while surfing the ancient waves of Bali.","resources/images/surfbali.jpeg"
 5,"Rock climbing","Yosemite National Park - USA","cold","ancient","adventure","budget-friendly","Embark on an ancient adventure with a budget-friendly rock climbing experience in Yosemite.","resources/images/rockclimbingyosemite.jpeg"
