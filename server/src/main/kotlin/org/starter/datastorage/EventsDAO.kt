@@ -25,7 +25,7 @@ class EventsDAO {
 //                    indoor.trim().removeSurrounding("\""),
 //                    description.trim().removeSurrounding("\""),
 //                    image.trim().removeSurrounding("\""),
-                val fields = it.split(',', ignoreCase = false, limit = 6)
+                val fields = it.split(',', ignoreCase = false, limit = 12)
                 Event(
                     fields[0].trim().toInt(),
                     fields[1].trim().removeSurrounding("\""),
