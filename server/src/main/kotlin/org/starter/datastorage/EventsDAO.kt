@@ -25,7 +25,7 @@ class EventsDAO {
 //                    indoor.trim().removeSurrounding("\""),
 //                    description.trim().removeSurrounding("\""),
 //                    image.trim().removeSurrounding("\""),
-                val fields = it.split(',', ignoreCase = false, limit = 12)
+                val fields = it.split(',', ignoreCase = false, limit = 9)
                 Event(
                     fields[0].trim().toInt(),
                     fields[1].trim().removeSurrounding("\""),
@@ -35,10 +35,7 @@ class EventsDAO {
                     fields[5].trim().removeSurrounding("\""),
                     fields[6].trim().removeSurrounding("\""),
                     fields[7].trim().removeSurrounding("\""),
-                    fields[8].trim().removeSurrounding("\""),
-                    fields[9].trim().removeSurrounding("\""),
-                    fields[10].trim().removeSurrounding("\""),
-                    fields[11].trim().removeSurrounding("\"")
+                    fields[8].trim().removeSurrounding("\"")
                 )
 
             }.toList()
@@ -62,11 +59,8 @@ class EventsDAO {
         val filters = sequenceOf(
             mapOf("climate" to checkFilterOrNot(userPreference.climate)),
             mapOf("historical" to checkFilterOrNot(userPreference.historical)),
-            mapOf("urban" to checkFilterOrNot(userPreference.urban)),
             mapOf("activities" to checkFilterOrNot(userPreference.activities)),
-            mapOf("scenery" to checkFilterOrNot(userPreference.scenery)),
-            mapOf("budget" to checkFilterOrNot(userPreference.budget)),
-            mapOf("vibe" to checkFilterOrNot(userPreference.vibe)),
+            mapOf("budget" to checkFilterOrNot(userPreference.budget))
 
 
         )
@@ -84,12 +78,8 @@ class EventsDAO {
                     when (key) {
                         "climate" -> it.climate == value
                         "historical" -> it.historical == value
-                        "urban" -> it.urban == value
                         "activities" -> it.activities == value
-                        "scenery" -> it.scenery == value
                         "budget" -> it.budget == value
-                        "vibe" -> it.vibe == value
-
                         else -> true // Handle other columns as needed
                     }
                 }
