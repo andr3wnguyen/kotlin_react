@@ -17,8 +17,8 @@ class GetEventsPage extends React.Component {
 
 
     getEvents = async () => {
-      const climate = this.state.Group
-      const historical = this.state.Indoor
+      const climate = this.state.Climate
+      const historical = this.state.Historical
       const urban = this.state.Urban
       const activities = this.state.Activities
       const scenery = this.state.Scenery
@@ -105,7 +105,7 @@ class GetEventsPage extends React.Component {
                 />      
 
                 <OptionButtons
-                name='Budget'
+                name='budget'
                 value1='Budget-friendly'
                 value2='No Preference'
                 value3='Luxury'
