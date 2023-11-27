@@ -35,7 +35,7 @@ const HomepageHeading = ({ changePage }) => (
   <Container text>
     <Header
       as='h1'
-      content='meep'
+      content='Discover'
       inverted
       style={{
         fontSize: '4em',
@@ -102,15 +102,6 @@ class DesktopContainer extends Component {
               secondary={!fixed}
               size='large'
             >
-              <Container>
-            
-                  <Button as='a' inverted={!fixed}>
-                    Log in
-                  </Button>
-                  <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
-                    Sign Up
-                  </Button>
-              </Container>
             </Menu>
             <HomepageHeading changePage={changePage}/>
           </Segment>

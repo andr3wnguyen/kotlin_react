@@ -11,16 +11,39 @@ import { Card, Image } from 'semantic-ui-react'
 //   </Card>
 // )
 
+//this page should be just pictures that you canc lick on to redirect. hover effect gives more info/name
+
+const placeholderImage = 'https://placekitten.com/200/200'; // Example placeholder image
+const aspectRatio = '1/1'; // Set the desired aspect ratio (width/height)
+
+
 const EventCard = (props) => (
-  <Card>
-    <Image src={props.image} wrapped ui={false} />
-    <Card.Content>
-      <Card.Header as='a' onClick={()=> props.changePage('eventInfo', props.id)}>{props.title}</Card.Header>
+  <Card style={{ width: '400px', height: '400px', overflow: 'hidden' }}>
+    <div
+      style={{
+        width: '50%',
+        height: 0,
+        paddingBottom: `calc(${aspectRatio} * 50%)`,
+        position: 'relative',
+      }}
+    >
+      <Image
+        style={{ position: 'absolute', top: 0, left: 0, width: '50%', height: '50%', objectFit: 'cover' }}
+        src={props.image || placeholderImage}
+        wrapped
+        ui={false}
+      />
+    </div>
+
+
+
+    {/* <Card.Content>
+      <Card.Header as='a' onClick={()=> props.changePage('eventInfo', props.id)}>{props.activity} {props.location}</Card.Header>
       {/* <Card.Meta>Joined in 2016</Card.Meta> */}
-      <Card.Description>
+      {/* <Card.Description>
         {props.description}
       </Card.Description>
-    </Card.Content>
+    </Card.Content>  */}
   </Card>
 )
 
